@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 110 30% 5%;
+        /* Dark green-black */
+        --foreground: 120 60% 50%;
+        /* Green text */
+
+        --card: 110 15% 10%;
+        --card-foreground: 120 60% 50%;
+
+        --popover: 110 15% 10%;
+        --popover-foreground: 120 60% 50%;
+
+        --primary: 120 60% 50%;
+        /* Pip-boy green */
+        --primary-foreground: 0 0% 0%;
+
+        --secondary: 45 100% 50%;
+        /* Vault-Tec gold */
+        --secondary-foreground: 0 0% 0%;
+
+        --muted: 110 15% 15%;
+        --muted-foreground: 120 30% 60%;
+
+        --accent: 210 100% 50%;
+        /* Vault-Tec blue */
+        --accent-foreground: 0 0% 100%;
+
+        --destructive: 0 85% 60%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 120 30% 30%;
+        --input: 120 30% 30%;
+        --ring: 120 60% 50%;
+
+        --radius: 0.3rem;
+
+        /* Sidebar specific colors */
+        --sidebar-background: 110 15% 10%;
+        --sidebar-foreground: 120 60% 50%;
+        --sidebar-primary: 120 60% 50%;
+        --sidebar-primary-foreground: 0 0% 0%;
+        --sidebar-accent: 110 10% 15%;
+        --sidebar-accent-foreground: 120 60% 50%;
+        --sidebar-border: 110 10% 20%;
+        --sidebar-ring: 120 60% 50%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    html {
+        @apply scroll-smooth;
+    }
+
+    body {
+        @apply bg-background text-foreground font-mono;
+        background-image: repeating-linear-gradient(to bottom,
+                rgba(76, 175, 80, 0.03) 0px,
+                rgba(76, 175, 80, 0.03) 1px,
+                transparent 1px,
+                transparent 2px);
+    }
+
+    /* Terminal-style scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-terminal-bg;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-vault-green;
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-vault-green-light;
+    }
+}
+
+@layer components {
+    .terminal-container {
+        @apply bg-terminal-bg border-2 border-vault-green p-4 rounded-md shadow-md;
+        box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    }
+
+    .terminal-header {
+        @apply text-vault-green text-xl font-bold mb-4 flex items-center;
+    }
+
+    .terminal-text {
+        @apply text-terminal-text font-mono;
+    }
+
+    .terminal-input {
+        @apply bg-terminal-bg border-vault-green text-vault-green font-mono px-3 py-2 focus:ring-vault-green focus:border-vault-green;
+    }
+
+    .pip-boy-frame {
+        @apply border-2 border-vault-green rounded-lg p-4 bg-terminal-bg;
+        box-shadow: inset 0 0 20px rgba(76, 175, 80, 0.3);
+    }
+
+    .vault-button {
+        @apply bg-vault-blue hover:bg-vault-blue-light text-white font-bold py-2 px-4 rounded focus:outline-none transition-all;
+    }
+
+    .priority-high {
+        @apply text-destructive font-bold;
+    }
+
+    .priority-medium {
+        @apply text-vault-gold font-bold;
+    }
+
+    .priority-low {
+        @apply text-vault-green font-bold;
+    }
+
+    .typing-effect {
+        @apply overflow-hidden whitespace-nowrap border-r-2 border-vault-green animate-typing;
+    }
+
+    .glow-text {
+        @apply animate-glow-pulse;
+    }
+
+    /* Vault door inspired circular progress */
+    .vault-progress {
+        @apply relative rounded-full overflow-hidden border-4 border-vault-gold bg-terminal-bg;
+    }
+
+    .vault-progress-fill {
+        @apply absolute top-0 left-0 h-full bg-vault-green;
+    }
+
+    .vault-progress-number {
+        @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-white;
+    }
+}
